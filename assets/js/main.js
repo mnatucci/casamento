@@ -167,28 +167,51 @@ function renderRSVP(){
 
 $('#rsvpForm').addEventListener('submit', async (e)=>{
   e.preventDefault();
-  const data = Object.fromEntries(new FormData(e.currentTarget).entries());
+
+  const form = e.currentTarget;
+  const data = Object.fromEntries(new FormData(form).entries());
   data.timestamp = new Date().toISOString();
 
-  if (supa) {
-    await supa.from('rsvps').insert({
+  try {
+    // 1) Salva no Supabase OU localStorage
+    if (supa) {
+      const { error } = await supa.from('rsvps').insert({
+        nome: data.nome,
+        whatsapp: data.whatsapp,
+        email: data.email,
+        presenca: data.presenca,
+        mensagem: data.mensagem || null
+      });
+
+      if (error) {
+        console.error('Erro ao inserir RSVP no Supabase:', error);
+      }
+    } else {
+      const list = local.get('rsvps', []);
+      list.push(data);
+      local.set('rsvps', list);
+    }
+
+    // 2) Atualiza o estado local IMEDIATAMENTE
+    if (!Array.isArray(STATE.rsvps)) {
+      STATE.rsvps = [];
+    }
+    STATE.rsvps = STATE.rsvps.concat([{
       nome: data.nome,
       whatsapp: data.whatsapp,
       email: data.email,
       presenca: data.presenca,
       mensagem: data.mensagem || null
-    });
-    await loadRSVPs();
-  } else {
-    const list = local.get('rsvps', []);
-    list.push(data);
-    local.set('rsvps', list);
-    STATE.rsvps = list;
-  }
+    }]);
 
-  e.currentTarget.reset();
-  renderRSVP();
-  toast('Presença confirmada. Obrigado! 💛');
+    // 3) Atualiza visuais
+    renderRSVP();
+    form.reset();
+    toast('Presença confirmada. Obrigado! 💛');
+  } catch (err) {
+    console.error('Erro geral ao confirmar presença:', err);
+    toast('Ops! Não conseguimos salvar agora. Tente novamente em instantes.');
+  }
 });
 
 // -------- MENSAGENS --------

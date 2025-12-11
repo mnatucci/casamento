@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -5,114 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lucas & Carolina — 07/03/2026</title>
   <meta name="description" content="Convite de casamento de Lucas & Carolina — 07 de março de 2026. Confirmação de presença (RSVP) + Lista de Presentes com Pix ou Mercado Pago." />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#FAF7F1; /* bege claro */
-      --fg:#1F2937; /* cinza-escuro */
-      --muted:#6B7280; /* cinza */
-      --accent:#F7C40A; /* amarelo girassol mais vivo */
-      --accent-2:#FFD861; /* brilho */
-      --green:#7CC000; /* verde vivo */
-      --green-2:#96D400;
-      --brown:#7A4E2B; /* marrom quente */
-      --card:#FFFFFF; /* branco */
-      --ring:#D6CEC0;
-      --ok:#16A34A; --warn:#B45309; --danger:#DC2626;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:'Inter', system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"}
-    a{color:inherit}
-    .container{max-width:1100px;margin:0 auto;padding:24px}
-
-    /* ===== HERO (mantendo a estrutura original) ===== */
-    header.hero{position:relative;overflow:hidden;border-bottom:1px solid #e9e5dd;min-height:68vh;background:#000}
-    header.hero::before{content:"";position:absolute;inset:0;background-image:url('https://curtamais.com.br/goiania/wp-content/uploads/sites/2/2020/05/22b0f95a15e76b3b97296635c17d1c52.jpg');background-size:cover;background-position:center;filter:contrast(1.08) saturate(1.18)}
-    header.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.30) 0%, rgba(0,0,0,.42) 42%, rgba(250,247,241,.94) 100%)}
-    .hero-wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr 0.9fr;gap:32px;align-items:center;padding:72px 24px}
-    @media (max-width: 900px){.hero-wrap{grid-template-columns:1fr;padding:56px 20px}}
-    .glass{backdrop-filter: blur(10px);background:rgba(255,255,255,.80);border:1px solid rgba(255,255,255,.55);border-radius:26px;box-shadow:0 20px 60px rgba(0,0,0,.22);padding:28px}
-
-    /* TÍTULOS mais elegantes */
-    .hero-title{font-family:'Great Vibes', cursive; font-weight:400; font-size:clamp(52px,9vw,92px); line-height:1.02; color:#2b2016; margin:0 0 4px; text-shadow:0 2px 10px rgba(0,0,0,.08)}
-    h1, h2, h3{font-family:'Playfair Display', serif}
-    .subtitle{font-size:clamp(16px,2.4vw,21px);color:#3f4a5a}
-
-    /* Pílulas e botões mais coloridos */
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;border:1px solid var(--ring);background:linear-gradient(180deg,#fff, #fff7dc)}
-    .date{display:inline-block;margin-top:12px;padding:8px 16px;background:linear-gradient(180deg,var(--accent),var(--accent-2));border:1px solid #f2e3a3;border-radius:999px;color:#4d2f00;font-weight:800;letter-spacing:.2px}
-    .cta{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
-    .btn{appearance:none;border:1px solid var(--ring);padding:12px 18px;border-radius:999px;background:#fff;cursor:pointer;font-weight:800;letter-spacing:.2px;transition:.25s;box-shadow:0 8px 22px rgba(0,0,0,.06)}
-    .btn:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(0,0,0,.10)}
-    .btn.primary{background:linear-gradient(180deg,var(--accent-2),var(--accent));border-color:#e6c34a}
-    .btn.green{background:linear-gradient(180deg,var(--green-2),var(--green));border-color:#6fb20f;color:white}
-
-    /* Sunflower corner SVG (já existia) */
-    .sun-overlay{position:absolute;right:-120px;bottom:-80px;opacity:.18;pointer-events:none}
-
-    /* ===== SEÇÕES ===== */
-    section{padding:60px 24px;border-bottom:1px dashed #e8e2d8;background:transparent;opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
-    section.visible{opacity:1;transform:none}
-    section h2{font-weight:700;font-size:clamp(22px,4.5vw,34px);margin:0 0 18px;color:#3d2a1a;position:relative;padding-bottom:10px}
-    /* faixa floral sutil sob o título */
-    section h2::after{content:'';position:absolute;left:0;bottom:-2px;width:120px;height:10px;background:linear-gradient(90deg,var(--accent),var(--green));border-radius:999px;opacity:.6}
-
-    .grid{display:grid;gap:20px}
-    .grid-2{grid-template-columns:1fr 1fr}
-    .grid-3{grid-template-columns:repeat(3,1fr)}
-    @media (max-width: 900px){.grid-2,.grid-3{grid-template-columns:1fr}}
-
-    .card{background:var(--card);border:1px solid #ece7dd;border-radius:18px;padding:18px;box-shadow:0 10px 28px rgba(0,0,0,.05)}
-    .card h3{margin:0 0 10px;font-size:20px;color:#2b2016}
-    .muted{color:var(--muted)}
-
-    .timeline{display:grid;gap:12px}
-    .timeline li{list-style:none;display:flex;gap:12px}
-    .timeline .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);margin-top:8px;box-shadow:0 0 0 4px #fff3, 0 6px 10px #0001}
-
-    .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-    .input{width:100%;padding:12px 14px;border:1px solid var(--ring);border-radius:12px;background:white}
-    .select{width:100%;padding:12px 14px;border:1px solid var(--ring);border-radius:12px;background:white}
-    .label{font-weight:700;font-size:14px;margin-bottom:6px;display:block}
-
-    .gift{display:grid;grid-template-columns:120px 1fr auto;gap:14px;align-items:center}
-    .gift img{width:120px;height:90px;object-fit:cover;border-radius:12px;border:1px solid #eee;background:#f6f6f6}
-    .gift .title{font-weight:800}
-    .gift .price{font-weight:800;color:#1f5130}
-    .gift .status{font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid var(--ring);color:#374151}
-    .gift.sold .status{border-color:#f0b9b9;color:#7f1d1d;background:#fff1f1}
-
-    .badge{font-size:12px;border:1px solid var(--ring);padding:4px 8px;border-radius:999px;color:#374151;background:#fff}
-
-    .footer{padding:32px 24px;background:linear-gradient(180deg, rgba(250,247,241,1) 0%, #f2ecdf 100%)}
-
-    dialog{border:none;border-radius:16px;max-width:560px;width:clamp(300px,90vw,560px);padding:0;box-shadow:0 8px 50px rgba(0,0,0,.25)}
-    dialog::backdrop{background:rgba(0,0,0,.4)}
-    .modal{padding:20px}
-    .modal header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-    .modal h3{margin:0;font-size:20px}
-    .close{background:none;border:none;font-size:20px;cursor:pointer}
-
-    .toast{position:fixed;right:16px;bottom:16px;display:flex;gap:10px;align-items:center;padding:12px 14px;border-radius:12px;background:white;border:1px solid var(--ring);box-shadow:0 4px 20px rgba(0,0,0,.08);opacity:0;transform:translateY(10px);transition:.25s}
-    .toast.show{opacity:1;transform:translateY(0)}
-
-    .calendar{display:inline-flex;gap:10px;flex-wrap:wrap}
-    .calendar a{border:1px solid var(--ring);padding:8px 12px;border-radius:10px;background:#fff;text-decoration:none}
-
-    .note{font-size:13px;color:#6b7280}
-
-    /* reveal cards */
-    .card.reveal{opacity:0;transform:translateY(10px);transition:.5s}
-    .card.reveal.show{opacity:1;transform:none}
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
   <header class="hero">
     <div class="container hero-wrap">
-      <div class="glass">
-        <span class="pill" aria-label="Tema campestre">🌻 Convite especial pra você</span>
-        <h1 class="hero-title">Lucas & Carolina</h1>
-        <p class="subtitle">Que essa página te envolva como um campo de girassóis ao entardecer — e que você sinta o convite: celebrar conosco esse amor.</p>
+      <div>
+        <span class="pill" aria-label="Tema campestre">🌻 Girassóis & Folhagens · Campo</span>
+        <h1>Lucas & Carolina</h1>
+        <p class="subtitle">Com o coração cheio de alegria, convidamos você para celebrar conosco um capítulo inesquecível.</p>
         <span class="date">07 de março de 2026</span>
         <div class="cta">
           <a class="btn primary" href="#rsvp">Confirmar presença</a>
@@ -124,37 +27,26 @@
           <a target="_blank" rel="noreferrer" id="add-google" href="#">Adicionar ao Google Calendar</a>
         </div>
       </div>
-      <div class="glass" style="background:rgba(255,255,255,.82)">
+      <div>
         <figure style="margin:0;border-radius:20px;overflow:hidden;border:1px solid #ece7dd">
-          <img src="imagens/nois.jpeg" alt="Campo de girassóis ao pôr do sol" style="width:100%;height:360px;object-fit:cover;display:block">
+          <img src="https://images.unsplash.com/photo-1504270997636-07ddfbd48945?q=80&w=1200&auto=format&fit=crop" alt="Campo de girassóis ao pôr do sol" style="width:100%;height:360px;object-fit:cover;display:block">
         </figure>
         <p class="muted" style="margin:10px 0 0">“Onde há luz, os girassóis se viram. Onde há amor, a gente floresce.”</p>
       </div>
     </div>
-    <!-- Petals overlay -->
-    <svg class="sun-overlay" width="520" height="520" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs>
-        <radialGradient id="grad2" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#EAB308"/>
-          <stop offset="100%" stop-color="#8B5E3C"/>
-        </radialGradient>
-      </defs>
-      <circle cx="210" cy="210" r="80" fill="url(#grad2)"/>
+    <svg class="sun-bg" width="420" height="420" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs><radialGradient id="grad" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#EAB308"/><stop offset="100%" stop-color="#8B5E3C"/></radialGradient></defs>
+      <circle cx="210" cy="210" r="80" fill="url(#grad)"/>
       <g fill="#F5D565" opacity=".9">
-        <circle cx="210" cy="98" r="32"/>
-        <circle cx="210" cy="322" r="32"/>
-        <circle cx="98" cy="210" r="32"/>
-        <circle cx="322" cy="210" r="32"/>
-        <circle cx="130" cy="130" r="28"/>
-        <circle cx="290" cy="130" r="28"/>
-        <circle cx="130" cy="290" r="28"/>
-        <circle cx="290" cy="290" r="28"/>
+        <circle cx="210" cy="98" r="32"/><circle cx="210" cy="322" r="32"/>
+        <circle cx="98" cy="210" r="32"/><circle cx="322" cy="210" r="32"/>
+        <circle cx="130" cy="130" r="28"/><circle cx="290" cy="130" r="28"/>
+        <circle cx="130" cy="290" r="28"/><circle cx="290" cy="290" r="28"/>
       </g>
       <g fill="#84CC16" opacity=".65">
-        <ellipse cx="60" cy="360" rx="40" ry="16"/>
-        <ellipse cx="360" cy="60" rx="40" ry="16"/>
-        <ellipse cx="380" cy="340" rx="30" ry="12"/>
-        <ellipse cx="40" cy="80" rx="30" ry="12"/>
+        <ellipse cx="60" cy="360" rx="40" ry="16"/><ellipse cx="360" cy="60" rx="40" ry="16"/>
+        <ellipse cx="380" cy="340" rx="30" ry="12"/><ellipse cx="40" cy="80" rx="30" ry="12"/>
       </g>
     </svg>
   </header>
@@ -193,12 +85,12 @@
             </div>
             <div class="grid grid-2">
               <div>
-                <label class="label" for="email">E-mail</label>
-                <input class="input" id="email" name="email" type="email" placeholder="voce@email.com" />
+                <label class="label" for="whatsapp">WhatsApp</label>
+                <input class="input" id="whatsapp" name="whatsapp" required placeholder="(xx) xxxxx-xxxx" />
               </div>
               <div>
-                <label class="label" for="telefone">Telefone (opcional)</label>
-                <input class="input" id="telefone" name="telefone" placeholder="(xx) xxxxx-xxxx" />
+                <label class="label" for="email">E-mail</label>
+                <input class="input" id="email" name="email" type="email" required placeholder="voce@email.com" />
               </div>
             </div>
             <div class="grid grid-2">
@@ -210,10 +102,6 @@
                   <option value="talvez">Talvez (avisarei em breve)</option>
                 </select>
               </div>
-              <div>
-                <label class="label" for="acompanhantes">Acompanhantes</label>
-                <input class="input" id="acompanhantes" name="acompanhantes" type="number" min="0" value="0" />
-              </div>
             </div>
             <div>
               <label class="label" for="mensagem">Mensagem (opcional)</label>
@@ -222,26 +110,42 @@
             <div class="row" style="justify-content:flex-end;margin-top:10px">
               <button class="btn green" type="submit">Enviar confirmação</button>
             </div>
-            <p class="note">Obs.: Seus dados ficam salvos apenas no nosso painel. Se preferir, nos chame no WhatsApp para confirmar.</p>
+            <p class="note">Sua confirmação é individual. Cada pessoa convidada tem um lugar pensado com carinho — por isso, se forem duas pessoas da mesma família, pedimos que cada uma confirme separadamente. 💛</p>
           </form>
 
           <div class="card">
-            <h3>Sobre presentes 💛</h3>
-            <p>Você é parte da nossa história — e a sua presença é o que mais queremos neste dia. Se desejar nos presentear, montamos uma lista com sugestões especiais. Fique à vontade: cada gesto será lembrado com carinho, e <strong>não há obrigação alguma</strong>.</p>
-            <p class="muted">Ao escolher um item e concluir o pagamento, ele será marcado como esgotado para evitar duplicidade.</p>
-            <a class="btn" href="#presentes">Ver lista de presentes</a>
+            <h3>Você é parte desse dia 💛</h3>
+            <p>Este convite é mais do que um link: é um abraço nosso em você. Cada pessoa que estará lá tem um lugar especial na nossa história — e a sua presença é o que torna esse dia completo.</p>
+            <div class="card" style="margin-top:10px;background:#fbfaf6">
+              <div class="row" style="justify-content:space-between;align-items:flex-start">
+                <div>
+                  <strong>Confirmados até agora</strong>
+                  <p class="muted" style="margin:4px 0 0">Pessoas que já disseram “sim, eu vou!”.</p>
+                </div>
+                <div class="badge">✅ <span id="rsvpCount">0</span> presença(s)</div>
+              </div>
+              <ul id="rsvpNames" class="muted" style="margin:10px 0 0;padding-left:18px;max-height:140px;overflow:auto"></ul>
+            </div>
+            <div style="margin-top:18px;text-align:left">
+              <a class="btn" href="#presentes">Ver lista de presentes</a>
+            </div>
+            <p class="note" style="margin-top:10px">Se quiser presentear, criamos uma lista prática logo abaixo. Mas, de verdade: o mais importante pra nós é dividir esse momento com você.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="presentes">
+<section id="presentes">
       <div class="container">
         <h2>Lista de presentes</h2>
+        <p class="muted" style="max-width:640px;margin-bottom:18px">
+          Organizamos tudo em duas partes: o que vamos pedir para montar nosso lar com carinho 💍 e o que vamos comprar aos poucos 💰.
+          Você escolhe o que fizer sentido — sem obrigação, no seu tempo, do seu jeito.
+        </p>
         <div class="grid">
           <div class="card">
             <div id="giftList" class="grid" style="gap:14px"></div>
-            <p class="note" style="margin-top:10px">Pagamento: Pix (chave do casal) ou Checkout Mercado Pago. Após confirmado, o item some automaticamente da lista neste dispositivo e para todos que abrirem o site (se hospedado com backend simples; ver nota técnica no fim).</p>
+            <p class="note" style="margin-top:10px">Pagamento: Pix (chave do casal) ou Checkout Mercado Pago. Para cada item, cole seu link de pagamento do Mercado Pago em <code>data/gifts.json</code> no campo <code>mp_link</code>. Lá, o convidado verá o produto, valor e poderá parcelar direto no ambiente seguro do Mercado Pago.</p>
           </div>
         </div>
       </div>
@@ -252,13 +156,13 @@
         <div class="card">
           <h2>Mensagens</h2>
           <p>Deixe um abraço por aqui. Seu carinho faz parte desse momento. 🌻</p>
-          <form id="msgForm">
+          <form id="msgForm" onsubmit="event.preventDefault();">
             <label class="label" for="msgNome">Seu nome</label>
             <input class="input" id="msgNome" required placeholder="Nome" />
             <label class="label" for="msgTexto" style="margin-top:10px">Mensagem</label>
             <textarea class="input" id="msgTexto" rows="3" required placeholder="Escreva sua mensagem…"></textarea>
             <div class="row" style="justify-content:flex-end;margin-top:10px">
-              <button class="btn" type="submit">Enviar</button>
+              <button class="btn" type="button" onclick="enviarMsg()">Enviar</button>
             </div>
           </form>
         </div>
@@ -268,7 +172,21 @@
         </div>
       </div>
     </section>
-      <section id="galeria">
+
+    <section id="agradecimento">
+      <div class="container grid grid-2">
+        <div class="card">
+          <h2>Obrigado por fazer parte</h2>
+          <p>Cada confirmação, cada mensagem e cada presente é um pedacinho da nossa história sendo escrito com você. Esse site é só uma porta de entrada: o que faz tudo valer a pena é ter você com a gente no dia 07/03/2026.</p>
+          <p class="muted">Mal podemos esperar para olhar ao redor, no meio do campo, ver todos os rostos que amamos — e saber que você está lá.</p>
+        </div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <img src="./assets/img/agradecimento.png" alt="Ilustração com girassóis e a frase obrigado por fazer parte dessa história" style="width:100%;height:100%;object-fit:cover">
+        </div>
+      </div>
+    </section>
+  </main>
+
   <footer class="footer">
     <div class="container grid grid-3">
       <div>
@@ -280,25 +198,25 @@
         <p class="muted">Se precisar, fale com a gente por WhatsApp ou e-mail. Vamos adorar te ajudar.</p>
       </div>
       <div>
-        <strong>Admin (oculto)</strong>
-        <p class="note">Acesse <code>?admin=1</code> no final da URL para ver painéis de manutenção (limpar RSVPs, mensagens e presentes).</p>
+        <strong>Observação técnica</strong>
+        <p class="note">Em GitHub Pages, tudo é estático. Por isso, usamos links seguros do Mercado Pago e podemos conectar um banco de dados gratuito (Supabase) para guardar confirmações e mensagens.</p>
       </div>
     </div>
   </footer>
 
-  <!-- MODAL: Seleção de pagamento/presente -->
+  <!-- Gift Modal -->
   <dialog id="giftModal">
     <div class="modal">
       <header>
         <h3 id="giftTitle">Selecionar presente</h3>
-        <button class="close" data-close>✕</button>
+        <button class="close" data-close onclick="document.getElementById('giftModal').close()">✕</button>
       </header>
       <div id="giftBody" class="grid" style="gap:12px">
         <div class="card" style="background:#fbfaf6">
           <strong>Como você prefere presentear?</strong>
           <div class="row" style="margin-top:10px">
-            <button class="btn" id="payPix">Pagar via Pix</button>
-            <button class="btn" id="payMP">Checkout Mercado Pago</button>
+            <button class="btn" id="payPix" type="button">Pagar via Pix</button>
+            <button class="btn" id="payMP" type="button">Checkout Mercado Pago</button>
           </div>
         </div>
         <div id="pixArea" class="card" style="display:none">
@@ -307,7 +225,7 @@
           <div class="grid grid-2">
             <div>
               <label class="label">Chave Pix</label>
-              <input class="input" id="pixKey" readonly value="CHAVE-PIX-DO-CASAL@exemplo.com" />
+              <input class="input" id="pixKey" readonly value="ccoelhomuniz@gmail.com" />
             </div>
             <div>
               <label class="label">Valor (R$)</label>
@@ -315,49 +233,15 @@
             </div>
           </div>
           <div class="row" style="margin-top:10px;justify-content:flex-end">
-            <button class="btn green" id="markPaid">Marcar como pago</button>
+            <button class="btn green" id="markPaid" type="button">Marcar como pago</button>
           </div>
-          <p class="note">* Implementação simples para site estático. Para automação 100% real via Pix/MP, ver nota técnica abaixo.</p>
+          <p class="note">* A marcação do item como presenteado pode ser centralizada em banco gratuito (Supabase) para todos verem o mesmo estado da lista.</p>
         </div>
         <div id="mpArea" class="card" style="display:none">
           <h4 style="margin:0 0 8px">Checkout Mercado Pago</h4>
-          <p class="muted">Ao clicar abaixo, você será direcionado ao pagamento seguro. Após concluir, volte e o item será marcado como esgotado (requer pequena integração).</p>
+          <p class="muted">Ao clicar abaixo, você será direcionado ao pagamento seguro do Mercado Pago. Lá você verá o item, valor e poderá parcelar.</p>
           <a id="mpCheckout" class="btn primary" target="_blank" rel="noreferrer">Ir para Checkout</a>
-          <p class="note">* Substitua a URL por uma preferência real do Mercado Pago. Veja observações técnicas no código.</p>
-        </div>
-      </div>
-    </div>
-  </dialog>
-
-  <!-- MODAL: Painel admin (se ?admin=1) -->
-  <dialog id="adminModal">
-    <div class="modal">
-      <header>
-        <h3>Painel administrativo</h3>
-        <button class="close" data-close>✕</button>
-      </header>
-      <div class="grid">
-        <div class="card">
-          <h4>RSVPs</h4>
-          <div class="row">
-            <button class="btn" id="exportRSVP">Exportar (CSV)</button>
-            <button class="btn" id="clearRSVP">Limpar RSVPs</button>
-          </div>
-          <pre id="rsvpPreview" style="white-space:pre-wrap"></pre>
-        </div>
-        <div class="card">
-          <h4>Mensagens</h4>
-          <div class="row">
-            <button class="btn" id="clearMSG">Limpar mensagens</button>
-          </div>
-          <pre id="msgPreview" style="white-space:pre-wrap"></pre>
-        </div>
-        <div class="card">
-          <h4>Presentes</h4>
-          <div class="row">
-            <button class="btn" id="resetGifts">Reiniciar presentes</button>
-          </div>
-          <pre id="giftPreview" style="white-space:pre-wrap"></pre>
+          <p class="note">* No arquivo <code>data/gifts.json</code>, coloque o link de pagamento (com parcelas) gerado no painel do Mercado Pago para cada item.</p>
         </div>
       </div>
     </div>
@@ -365,217 +249,9 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite">✅ Ação concluída!</div>
 
-  <script>
-  // ===== UTIL =====
-  const $ = (sel, root=document) => root.querySelector(sel);
-  const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
-  const toast = (msg) => { const el = $('#toast'); el.textContent = msg; el.classList.add('show'); setTimeout(()=> el.classList.remove('show'), 2200); };
-  const currencyBRL = (v) => new Intl.NumberFormat('pt-BR', {style:'currency', currency:'BRL'}).format(v);
-
-  // ===== CALENDAR LINKS =====
-  (function buildCalendars(){
-    const title = 'Casamento — Lucas & Carolina';
-    const details = 'Vamos celebrar juntos! Informações no site.';
-    // Data: 07/03/2026 — supondo 16h-22h em America/Sao_Paulo
-    const start = new Date('2026-03-07T16:00:00-03:00');
-    const end   = new Date('2026-03-07T22:00:00-03:00');
-    const toICS = (d) => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}Z$/, 'Z');
-    const ics = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Convite Lucas&Carolina//PT-BR\nBEGIN:VEVENT\nUID:${Date.now()}@lucas-carolina\nDTSTAMP:${toICS(new Date())}\nDTSTART:${toICS(start)}\nDTEND:${toICS(end)}\nSUMMARY:${title}\nDESCRIPTION:${details}\nEND:VEVENT\nEND:VCALENDAR`;
-    const icsBlob = new Blob([ics], {type: 'text/calendar;charset=utf-8'});
-    const icsUrl = URL.createObjectURL(icsBlob);
-    $('#add-ics').href = icsUrl;
-
-    const gUrl = new URL('https://calendar.google.com/calendar/render');
-    gUrl.searchParams.set('action','TEMPLATE');
-    gUrl.searchParams.set('text', title);
-    gUrl.searchParams.set('details', details);
-    gUrl.searchParams.set('dates', `${toICS(start)}/${toICS(end)}`);
-    $('#add-google').href = gUrl.toString();
-  })();
-
-  // ===== RSVP =====
-  const RSVP_KEY = 'rsvps';
-  const loadRSVPs = () => JSON.parse(localStorage.getItem(RSVP_KEY) || '[]');
-  const saveRSVPs = (list) => localStorage.setItem(RSVP_KEY, JSON.stringify(list));
-
-  $('#rsvpForm').addEventListener('submit', (e)=>{
-    e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.currentTarget).entries());
-    data.timestamp = new Date().toISOString();
-    const rsvps = loadRSVPs();
-    rsvps.push(data);
-    saveRSVPs(rsvps);
-    e.currentTarget.reset();
-    toast('Presença confirmada. Obrigado! 💛');
-  });
-
-  // ===== Mensagens afetivas =====
-  const MSG_KEY = 'msgs';
-  const loadMsgs = () => JSON.parse(localStorage.getItem(MSG_KEY) || '[]');
-  const saveMsgs = (list) => localStorage.setItem(MSG_KEY, JSON.stringify(list));
-  const renderMsgs = () => {
-    const list = loadMsgs();
-    const wrap = $('#msgList');
-    wrap.innerHTML = '';
-    list.slice(-8).reverse().forEach(m => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `<strong>${m.nome}</strong><p class="muted" style="margin:6px 0 0">${m.texto}</p>`;
-      wrap.appendChild(card);
-    });
-  };
-  $('#msgForm').addEventListener('submit', (e)=>{
-    e.preventDefault();
-    const nome = $('#msgNome').value.trim();
-    const texto = $('#msgTexto').value.trim();
-    if(!nome || !texto) return;
-    const list = loadMsgs();
-    list.push({nome, texto, t:new Date().toISOString()});
-    saveMsgs(list);
-    $('#msgForm').reset();
-    renderMsgs();
-    toast('Mensagem enviada com carinho!');
-  });
-  renderMsgs();
-
-  // ===== Presentes =====
-  const GIFTS_KEY = 'gifts-v1';
-  const initialGifts = [
-    {id:'1', nome:'Jogo de cama casal (algodão egípcio)', preco: 420, img:'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="240" height="180"><rect width="100%" height="100%" fill="%23fbf6e9"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" fill="%238B5E3C">Jogo de Cama</text></svg>'},
-    {id:'2', nome:'Conjunto de panelas antiaderentes', preco: 580, img:'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="240" height="180"><rect width="100%" height="100%" fill="%23fbf6e9"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" fill="%238B5E3C">Panelas</text></svg>'},
-    {id:'3', nome:'Cotas da Lua de Mel', preco: 300, img:'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="240" height="180"><rect width="100%" height="100%" fill="%23fbf6e9"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" fill="%238B5E3C">Lua de Mel</text></svg>'},
-    {id:'4', nome:'Aspirador robô', preco: 1200, img:'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="240" height="180"><rect width="100%" height="100%" fill="%23fbf6e9"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" fill="%238B5E3C">Aspirador Robô</text></svg>'},
-    {id:'5', nome:'Jantar a dois (experiência)', preco: 250, img:'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="240" height="180"><rect width="100%" height="100%" fill="%23fbf6e9"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" fill="%238B5E3C">Jantar a dois</text></svg>'},
-    {id:'6', nome:'Cafeteira espresso', preco: 850, img:'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="240" height="180"><rect width="100%" height="100%" fill="%23fbf6e9"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" fill="%238B5E3C">Cafeteira</text></svg>'}
-  ];
-
-  const loadGifts = () => {
-    const raw = localStorage.getItem(GIFTS_KEY);
-    if(!raw){
-      localStorage.setItem(GIFTS_KEY, JSON.stringify({items:initialGifts, sold:[]}));
-      return {items:initialGifts, sold:[]};
-    }
-    try { return JSON.parse(raw); } catch { return {items:initialGifts, sold:[]} }
-  };
-  const saveGifts = (data) => localStorage.setItem(GIFTS_KEY, JSON.stringify(data));
-
-  let gifts = loadGifts();
-  const renderGifts = () => {
-    const list = $('#giftList');
-    list.innerHTML = '';
-    gifts.items.forEach(g => {
-      const sold = gifts.sold.includes(g.id);
-      const row = document.createElement('div');
-      row.className = `gift card ${sold ? 'sold' : ''}`;
-      row.innerHTML = `
-        <img src="${g.img}" alt="${g.nome}" />
-        <div>
-          <div class="title">${g.nome}</div>
-          <div class="muted">Sugestão — sem obrigação</div>
-          <div class="price" style="margin-top:6px">${currencyBRL(g.preco)}</div>
-          <div style="margin-top:8px"><span class="status">${sold ? 'Esgotado / já presenteado' : 'Disponível'}</span></div>
-        </div>
-        <div>
-          <button class="btn" ${sold ? 'disabled' : ''} data-gift="${g.id}">${sold ? 'Indisponível' : 'Escolher'}</button>
-        </div>`;
-      list.appendChild(row);
-    });
-  };
-  renderGifts();
-
-  // Modal de presentes
-  const giftModal = $('#giftModal');
-  let currentGift = null;
-  document.addEventListener('click', (e)=>{
-    const btn = e.target.closest('button[data-gift]');
-    if(btn){
-      const id = btn.getAttribute('data-gift');
-      currentGift = gifts.items.find(x=>x.id===id) || null;
-      if(!currentGift) return;
-      $('#giftTitle').textContent = currentGift.nome;
-      $('#pixArea').style.display = 'none';
-      $('#mpArea').style.display = 'none';
-      giftModal.showModal();
-    }
-    if(e.target.matches('[data-close]')) giftModal.close();
-  });
-
-  $('#payPix').addEventListener('click', ()=>{
-    $('#pixArea').style.display = '';
-    $('#mpArea').style.display = 'none';
-    $('#pixValue').value = currentGift ? currentGift.preco : '';
-  });
-  $('#payMP').addEventListener('click', ()=>{
-    $('#pixArea').style.display = 'none';
-    $('#mpArea').style.display = '';
-    // === INTEGRAÇÃO MERCADO PAGO ===
-    // Substitua a URL abaixo por um link de preferência (Checkout Pro) gerado na sua conta.
-    // Ex.: https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEU_PREF_ID
-    $('#mpCheckout').href = 'https://www.mercadopago.com.br/';
-  });
-
-  $('#markPaid').addEventListener('click', ()=>{
-    if(!currentGift) return;
-    // Marca como pago (simulação para site estático)
-    if(!gifts.sold.includes(currentGift.id)) gifts.sold.push(currentGift.id);
-    saveGifts(gifts);
-    renderGifts();
-    giftModal.close();
-    toast('Obrigado pelo carinho! Presente registrado. 🌻');
-  });
-
-  // ===== ADMIN (URL ?admin=1) =====
-  const params = new URLSearchParams(location.search);
-  if(params.get('admin')==='1'){
-    const adminModal = $('#adminModal');
-    const openAdmin = () => {
-      // RSVPs
-      $('#rsvpPreview').textContent = JSON.stringify(loadRSVPs(), null, 2);
-      // MSGs
-      $('#msgPreview').textContent = JSON.stringify(loadMsgs(), null, 2);
-      // Gifts
-      $('#giftPreview').textContent = JSON.stringify(loadGifts(), null, 2);
-      adminModal.showModal();
-    };
-    openAdmin();
-
-    $('#clearRSVP').addEventListener('click', ()=>{ saveRSVPs([]); $('#rsvpPreview').textContent='[]'; toast('RSVPs limpos'); });
-    $('#clearMSG').addEventListener('click', ()=>{ saveMsgs([]); $('#msgPreview').textContent='[]'; renderMsgs(); toast('Mensagens limpas'); });
-    $('#resetGifts').addEventListener('click', ()=>{ localStorage.removeItem(GIFTS_KEY); gifts = loadGifts(); renderGifts(); $('#giftPreview').textContent = JSON.stringify(gifts, null, 2); toast('Presentes reiniciados');});
-
-    $('#exportRSVP').addEventListener('click', ()=>{
-      const rows = loadRSVPs();
-      const headers = ['nome','email','telefone','presenca','acompanhantes','mensagem','timestamp'];
-      const csv = [headers.join(',')].concat(rows.map(r=> headers.map(h => '"'+(r[h]||'').toString().replaceAll('"','\"')+'"').join(','))).join('\n');
-      const blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = 'rsvps.csv'; a.click();
-      URL.revokeObjectURL(url);
-    });
-
-    adminModal.addEventListener('click', (e)=>{ if(e.target.matches('[data-close]')) adminModal.close(); });
-  }
-
-  // ===== REVEAL ON SCROLL =====
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(en=>{
-      if(en.isIntersecting){ en.target.classList.add('visible'); io.unobserve(en.target); }
-    });
-  }, {threshold: .12});
-  $$('section').forEach(sec=> io.observe(sec));
-  const ioCards = new IntersectionObserver((entries)=>{
-    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('show'); ioCards.unobserve(en.target);} });
-  }, {threshold:.15});
-  $$('.card').forEach(c=>{ c.classList.add('reveal'); ioCards.observe(c); });
-
-  // ===== NOTA TÉCNICA (comentário no código) =====
-  // Para que os presentes "sumam" para todos automaticamente após pagamento real, hospede este site com um backend simples (Firebase, Supabase ou planilha Google via Apps Script) que:
-  // 1) Armazene o estado de cada presente (disponível/esgotado) num banco.
-  // 2) Exponha um endpoint REST (GET/POST). Esta página chama GET para renderizar e POST para marcar como pago.
-  // 3) Integração Pix: use um provedor (ou API do seu banco) para gerar QR/Payload e Webhook de confirmação que, ao ser recebido, marca o item como esgotado.
-  // 4) Mercado Pago: gere uma preferência por item, defina o "back_url" ou webhook. Ao receber confirmação, marque o item como esgotado no banco.
-  // Assim, todos os visitantes verão a lista atualizada em tempo real.
-  </script>
+  <!-- Supabase (DB gratuito compatível com GitHub Pages) -->
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="./assets/js/config.example.js"></script>
+  <script src="./assets/js/main.js"></script>
 </body>
 </html>

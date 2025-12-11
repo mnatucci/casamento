@@ -6,6 +6,6 @@
 
 window.APP_CONFIG = {
   SUPABASE_URL: "https://nqzfryhjlxzaksblmjtt.supabase.co",        // ex.: "https://seu-projeto.supabase.co"
-  SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5xemZyeWhqbHh6YWtzYmxtanR0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU0NTk3ODksImV4cCI6MjA4MTAzNTc4OX0.QQyBhyXgF-JYx3qxFWRUhucnRbPcVM-OlA9p63RBtT8",   // chave pública anon (Settings > API > anon)
+  SUPABASE_ANON_KEY: "sb_publishable_up_Njp0j-3GWA2eYWHV0hw_FkSA9vH5",   // chave pública anon (Settings > API > anon)
   PIX_KEY: "ccoelhomuniz@gmail.com"
 };

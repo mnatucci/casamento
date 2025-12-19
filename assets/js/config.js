@@ -1,1 +1,0 @@
-window.APP_CONFIG={GIFTS_API:"https://script.google.com/macros/s/AKfycbyt5mh7BfdcBugnasxfF6TCfkClBUdfft0X0kNZdN6bX4YMsEXgnW-YAkbe10d4RY32Bw/exec"};

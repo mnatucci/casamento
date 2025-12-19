@@ -277,23 +277,51 @@ async function boot(){
 boot();
 
 
-/* === PRESENTES VIA GOOGLE SHEETS (ÚNICA FONTE) === */
+/* ===== LISTA DE PRESENTES (GOOGLE SHEETS) ===== */
 async function carregarPresentes(){
- const res = await fetch(APP_CONFIG.GIFTS_API);
- const dados = await res.json();
- const el = document.getElementById("giftList");
- el.innerHTML = "";
- dados.forEach(p=>{
-  const d = document.createElement("div");
-  d.className="gift card "+(p.status!=="DISPONIVEL"?"sold":"");
-  d.innerHTML=`
-   <strong>${p.nome}</strong>
-   <div class="price">R$ ${p.preco}</div>
-   <button ${p.status!=="DISPONIVEL"?"disabled":""}
-    onclick="window.open(APP_CONFIG.GIFTS_API+'?checkout='+p.id,'_blank')">
-    ${p.status!=="DISPONIVEL"?"Indisponível":"Presentear"}
-   </button>`;
-  el.appendChild(d);
- });
+  const res = await fetch(APP_CONFIG.GIFTS_API + "?action=list");
+  const dados = await res.json();
+
+  const lista = document.getElementById("giftList");
+  lista.innerHTML = "";
+
+  dados.forEach(p => {
+    const indisponivel = p.status.toLowerCase() !== "disponivel";
+
+    const card = document.createElement("div");
+    card.className = "gift card" + (indisponivel ? " sold" : "");
+
+    card.innerHTML = `
+      <strong>${p.nome}</strong>
+      <div class="price">R$ ${p.preco}</div>
+      <button ${indisponivel ? "disabled" : ""}
+        onclick="checkoutPresente(${p.id})">
+        ${indisponivel ? "Indisponível" : "Presentear"}
+      </button>
+    `;
+
+    lista.appendChild(card);
+  });
 }
-document.addEventListener("DOMContentLoaded",carregarPresentes);
+
+async function checkoutPresente(id){
+  const res = await fetch(APP_CONFIG.GIFTS_API + "?action=checkout&id=" + id);
+  const data = await res.json();
+
+  if(data.error){
+    alert(data.error);
+    carregarPresentes();
+    return;
+  }
+
+  alert(
+    "Presente reservado!\n\n" +
+    "Nome: " + data.nome + "\n" +
+    "Valor: R$ " + data.valor + "\n\n" +
+    "Pix do casal:\n" + data.pix
+  );
+
+  carregarPresentes();
+}
+
+document.addEventListener("DOMContentLoaded", carregarPresentes);

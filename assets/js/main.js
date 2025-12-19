@@ -22,7 +22,7 @@ if (window.APP_CONFIG && APP_CONFIG.SUPABASE_URL && APP_CONFIG.SUPABASE_ANON_KEY
 (function buildCalendars(){
   const title = 'Casamento — Lucas & Carolina';
   const details = 'Vamos celebrar juntos! Informações no site.';
-  const start = new Date('2026-03-07T16:00:00-03:00');
+  const start = new Date('2025-03-21T10:30:00-03:00');
   const end   = new Date('2026-03-07T22:00:00-03:00');
   const toICS = (d)=> d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z$/,'Z');
   const ics = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Convite Lucas&Carolina//PT-BR\nBEGIN:VEVENT\nUID:${Date.now()}@lucas-carolina\nDTSTAMP:${toICS(new Date())}\nDTSTART:${toICS(start)}\nDTEND:${toICS(end)}\nSUMMARY:${title}\nDESCRIPTION:${details}\nEND:VEVENT\nEND:VCALENDAR`;
@@ -167,13 +167,14 @@ function renderRSVP(){
 
 $('#rsvpForm').addEventListener('submit', async (e)=>{
   e.preventDefault();
-
-  const form = e.currentTarget;
-  const data = Object.fromEntries(new FormData(form).entries());
+  const data = Object.fromEntries(new FormData(e.currentTarget).entries());
   data.timestamp = new Date().toISOString();
 
+  // Atualiza a UI de forma otimista
+  STATE.rsvps = (STATE.rsvps || []).concat(data);
+  renderRSVP();
+
   try {
-    // 1) Salva no Supabase OU localStorage
     if (supa) {
       const { error } = await supa.from('rsvps').insert({
         nome: data.nome,
@@ -182,35 +183,28 @@ $('#rsvpForm').addEventListener('submit', async (e)=>{
         presenca: data.presenca,
         mensagem: data.mensagem || null
       });
-
       if (error) {
-        console.error('Erro ao inserir RSVP no Supabase:', error);
+        console.error('[RSVP] erro ao salvar no Supabase:', error);
+        toast('Recebemos sua confirmação, mas houve uma falha ao salvar no servidor. Tente novamente mais tarde. 💛');
+      } else {
+        // recarrega da base para garantir contagem correta
+        await loadRSVPs();
+        renderRSVP();
+        toast('Presença confirmada. Obrigado! 💛');
       }
     } else {
       const list = local.get('rsvps', []);
       list.push(data);
       local.set('rsvps', list);
+      STATE.rsvps = list;
+      renderRSVP();
+      toast('Presença confirmada. Obrigado! 💛');
     }
-
-    // 2) Atualiza o estado local IMEDIATAMENTE
-    if (!Array.isArray(STATE.rsvps)) {
-      STATE.rsvps = [];
-    }
-    STATE.rsvps = STATE.rsvps.concat([{
-      nome: data.nome,
-      whatsapp: data.whatsapp,
-      email: data.email,
-      presenca: data.presenca,
-      mensagem: data.mensagem || null
-    }]);
-
-    // 3) Atualiza visuais
-    renderRSVP();
-    form.reset();
-    toast('Presença confirmada. Obrigado! 💛');
   } catch (err) {
-    console.error('Erro geral ao confirmar presença:', err);
-    toast('Ops! Não conseguimos salvar agora. Tente novamente em instantes.');
+    console.error('[RSVP] erro inesperado:', err);
+    toast('Sua confirmação foi enviada, mas tivemos um problema técnico. Se puder, tente novamente mais tarde. 💛');
+  } finally {
+    e.currentTarget.reset();
   }
 });
 

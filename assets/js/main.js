@@ -277,7 +277,7 @@ async function boot(){
 boot();
 
 
-/* === PRESENTES VIA GOOGLE SHEETS === */
+/* === PRESENTES VIA GOOGLE SHEETS (ÚNICA FONTE) === */
 async function carregarPresentes(){
  const res = await fetch(APP_CONFIG.GIFTS_API);
  const dados = await res.json();
@@ -288,7 +288,7 @@ async function carregarPresentes(){
   d.className="gift card "+(p.status!=="DISPONIVEL"?"sold":"");
   d.innerHTML=`
    <strong>${p.nome}</strong>
-   <div>R$ ${p.preco}</div>
+   <div class="price">R$ ${p.preco}</div>
    <button ${p.status!=="DISPONIVEL"?"disabled":""}
     onclick="window.open(APP_CONFIG.GIFTS_API+'?checkout='+p.id,'_blank')">
     ${p.status!=="DISPONIVEL"?"Indisponível":"Presentear"}

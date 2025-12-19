@@ -182,47 +182,7 @@
   </footer>
 
   <!-- Gift Modal -->
-  <dialog id="giftModal">
-    <div class="modal">
-      <header>
-        <h3 id="giftTitle">Selecionar presente</h3>
-        <button class="close" data-close onclick="document.getElementById('giftModal').close()">✕</button>
-      </header>
-      <div id="giftBody" class="grid" style="gap:12px">
-        <div class="card" style="background:#fbfaf6">
-          <strong>Como você prefere presentear?</strong>
-          <div class="row" style="margin-top:10px">
-            <button class="btn" id="payPix" type="button">Pagar via Pix</button>
-            <button class="btn" id="payMP" type="button">Checkout Mercado Pago</button>
-          </div>
-        </div>
-        <div id="pixArea" class="card" style="display:none">
-          <h4 style="margin:0 0 8px">Pagamento por Pix</h4>
-          <p class="muted">Use a chave Pix abaixo e o valor sugerido. Após efetuar o pagamento no seu app bancário, clique em <em>“Marcar como pago”</em> para registrar.</p>
-          <div class="grid grid-2">
-            <div>
-              <label class="label">Chave Pix</label>
-              <input class="input" id="pixKey" readonly value="ccoelhomuniz@gmail.com" />
-            </div>
-            <div>
-              <label class="label">Valor (R$)</label>
-              <input class="input" id="pixValue" />
-            </div>
-          </div>
-          <div class="row" style="margin-top:10px;justify-content:flex-end">
-            <button class="btn green" id="markPaid" type="button">Marcar como pago</button>
-          </div>
-          <p class="note">* A marcação do item como presenteado pode ser centralizada em banco gratuito (Supabase) para todos verem o mesmo estado da lista.</p>
-        </div>
-        <div id="mpArea" class="card" style="display:none">
-          <h4 style="margin:0 0 8px">Checkout Mercado Pago</h4>
-          <p class="muted">Ao clicar abaixo, você será direcionado ao pagamento seguro do Mercado Pago. Lá você verá o item, valor e poderá parcelar.</p>
-          <a id="mpCheckout" class="btn primary" target="_blank" rel="noreferrer">Ir para Checkout</a>
-          <p class="note">* No arquivo <code>data/gifts.json</code>, coloque o link de pagamento (com parcelas) gerado no painel do Mercado Pago para cada item.</p>
-        </div>
-      </div>
-    </div>
-  </dialog>
+  
 
   <div id="toast" class="toast" role="status" aria-live="polite">✅ Ação concluída!</div>
 

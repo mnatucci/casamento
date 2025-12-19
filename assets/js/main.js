@@ -276,52 +276,20 @@ async function boot(){
 }
 boot();
 
-
-/* ===== LISTA DE PRESENTES (GOOGLE SHEETS) ===== */
 async function carregarPresentes(){
-  const res = await fetch(APP_CONFIG.GIFTS_API + "?action=list");
-  const dados = await res.json();
-
-  const lista = document.getElementById("giftList");
-  lista.innerHTML = "";
-
-  dados.forEach(p => {
-    const indisponivel = p.status.toLowerCase() !== "disponivel";
-
-    const card = document.createElement("div");
-    card.className = "gift card" + (indisponivel ? " sold" : "");
-
-    card.innerHTML = `
-      <strong>${p.nome}</strong>
-      <div class="price">R$ ${p.preco}</div>
-      <button ${indisponivel ? "disabled" : ""}
-        onclick="checkoutPresente(${p.id})">
-        ${indisponivel ? "Indisponível" : "Presentear"}
-      </button>
-    `;
-
-    lista.appendChild(card);
-  });
+ const r=await fetch(APP_CONFIG.GIFTS_API+"?action=list");
+ const d=await r.json();
+ const l=document.getElementById("giftList");
+ l.innerHTML="";
+ d.forEach(p=>{
+  const dis=p.status.toLowerCase()!=="disponivel";
+  const c=document.createElement("div");
+  c.className="gift card";
+  c.innerHTML=`<strong>${p.nome}</strong><div>R$ ${p.preco}</div>
+  <button ${dis?"disabled":""}
+  onclick="window.open(APP_CONFIG.GIFTS_API+'?action=checkout&id=${p.id}','_blank')">
+  ${dis?"Indisponível":"Presentear via PagBank"}</button>`;
+  l.appendChild(c);
+ });
 }
-
-async function checkoutPresente(id){
-  const res = await fetch(APP_CONFIG.GIFTS_API + "?action=checkout&id=" + id);
-  const data = await res.json();
-
-  if(data.error){
-    alert(data.error);
-    carregarPresentes();
-    return;
-  }
-
-  alert(
-    "Presente reservado!\n\n" +
-    "Nome: " + data.nome + "\n" +
-    "Valor: R$ " + data.valor + "\n\n" +
-    "Pix do casal:\n" + data.pix
-  );
-
-  carregarPresentes();
-}
-
-document.addEventListener("DOMContentLoaded", carregarPresentes);
+document.addEventListener("DOMContentLoaded",carregarPresentes);

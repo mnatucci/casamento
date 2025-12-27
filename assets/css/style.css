@@ -1,9 +1,0 @@
-
-body{margin:0;font-family:Arial;background:#f4f5f2;color:#2e2e2e}
-.hero{padding:80px 20px;text-align:center;background:#6B705C;color:#fff}
-section{padding:50px 20px;text-align:center}
-.gallery img{width:260px;margin:10px;border-radius:12px}
-input,select{padding:10px;margin:6px;width:260px}
-button{padding:12px 24px;background:#6B705C;color:#fff;border:none;cursor:pointer}
-#giftList{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.gift{background:#fff;padding:20px;border-radius:12px}

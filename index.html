@@ -2,50 +2,13 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Lucas & Carolina | 21/03/2025</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="assets/css/style.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<title>Teste Lista de Presentes</title>
 </head>
 <body>
 
-<header class="hero">
-  <h1>Lucas & Carolina</h1>
-  <p>21 de março de 2025</p>
-</header>
+<h1>Lista de Presentes</h1>
+<div id="giftList">Carregando...</div>
 
-<section class="intro">
-  <p>Este convite foi feito para pessoas especiais. Sua presença é o nosso maior presente.</p>
-</section>
-
-<section class="gallery">
-  <img src="assets/img/casal1.jpg">
-  <img src="assets/img/casal2.jpg">
-  <img src="assets/img/casal3.jpg">
-</section>
-
-<section class="rsvp">
-<h2>Confirmação de Presença</h2>
-<form id="rsvpForm">
-<input id="nome" placeholder="Nome completo" required>
-<input id="whatsapp" placeholder="WhatsApp" required>
-<input id="email" type="email" placeholder="E-mail" required>
-<select id="presenca">
-<option value="sim">Confirmo presença</option>
-<option value="nao">Não poderei ir</option>
-<option value="talvez">Talvez</option>
-</select>
-<button>Confirmar</button>
-<p id="msg"></p>
-</form>
-</section>
-
-<section class="gifts">
-<h2>Lista de Presentes</h2>
-<div id="giftList"></div>
-</section>
-
-<script src="assets/js/config.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="main.js"></script>
 </body>
 </html>

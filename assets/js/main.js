@@ -42,7 +42,6 @@ async function loadGifts(){
     renderGifts();
   } catch (err) {
     console.error('API Load Error:', err);
-    // Fallback
     try {
       const localRes = await fetch('./data/gifts.json');
       const localData = await localRes.json();
@@ -73,7 +72,6 @@ function renderGifts(){
       <img src="${defaultImg}" alt="${g.nome}">
       <div class="title">${g.nome}</div>
       <div class="price">${currencyBRL(g.preco)}</div>
-      <span class="status">${sold ? 'Já presenteado' : 'Disponível'}</span>
       <button class="btn ${sold ? 'outline' : 'primary'}" ${sold ? 'disabled' : ''} data-gift-id="${g.id}">
         ${sold ? 'Indisponível' : 'Presentear 🎁'}
       </button>`;
@@ -155,32 +153,14 @@ window.enviarMsg = async function(){
   }
 };
 
-// -------- INTERSECTION OBSERVER --------
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, observerOptions);
-
-function initAnimations() {
-  if (window.innerWidth > 900) {
-    $$('section').forEach(section => observer.observe(section));
-  } else {
-    $$('section').forEach(section => section.classList.add('visible'));
-  }
-}
-
 // -------- BOOT --------
 async function boot(){
-  initAnimations();
+  // Garantir que todas as seções estejam visíveis
+  document.querySelectorAll('section').forEach(s => {
+    s.style.opacity = '1';
+    s.style.transform = 'none';
+    s.style.display = 'block';
+  });
   await loadGifts();
 }
 

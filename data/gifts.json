@@ -5,7 +5,7 @@
       "nome": "Geladeira",
       "preco": 2500,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_1.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -13,7 +13,7 @@
       "nome": "Fogão",
       "preco": 1800,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_2.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -21,7 +21,7 @@
       "nome": "Air fryer",
       "preco": 500,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_3.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -29,7 +29,7 @@
       "nome": "Pipoqueira",
       "preco": 200,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_4.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -37,7 +37,7 @@
       "nome": "Micro-ondas",
       "preco": 700,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_5.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -45,7 +45,7 @@
       "nome": "Liquidificador",
       "preco": 250,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_6.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -53,7 +53,7 @@
       "nome": "Batedeira",
       "preco": 350,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_7.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -61,7 +61,7 @@
       "nome": "Ferro de passar",
       "preco": 200,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_8.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -69,7 +69,7 @@
       "nome": "Sanduicheira",
       "preco": 200,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_9.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -77,7 +77,7 @@
       "nome": "Filtro de água",
       "preco": 600,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_10.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -85,7 +85,7 @@
       "nome": "Conjunto de panelas",
       "preco": 600,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_11.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -93,7 +93,7 @@
       "nome": "Jogo de facas",
       "preco": 250,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_12.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -101,7 +101,7 @@
       "nome": "Sofá",
       "preco": 3500,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_13.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -109,7 +109,7 @@
       "nome": "Rack para TV",
       "preco": 900,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_14.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -117,7 +117,7 @@
       "nome": "TV",
       "preco": 2800,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_15.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -125,7 +125,7 @@
       "nome": "Mesa de jantar",
       "preco": 2000,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_16.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -133,7 +133,7 @@
       "nome": "Cadeiras",
       "preco": 800,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_17.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -141,7 +141,7 @@
       "nome": "Cama baú",
       "preco": 2600,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_18.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -149,7 +149,7 @@
       "nome": "Colchão",
       "preco": 2000,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_19.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -157,7 +157,7 @@
       "nome": "Edredom/cobertor",
       "preco": 300,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_20.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -165,7 +165,7 @@
       "nome": "Guarda-roupa",
       "preco": 2800,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_21.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -173,7 +173,7 @@
       "nome": "Mesinha de cama",
       "preco": 400,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_22.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -181,7 +181,7 @@
       "nome": "Ventilador",
       "preco": 250,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_23.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -189,7 +189,7 @@
       "nome": "Robô aspirador",
       "preco": 1500,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_24.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -197,7 +197,7 @@
       "nome": "Aspirador de pó",
       "preco": 700,
       "grupo": "Vamos pedir",
-      "img": "./assets/img/gift_25.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -205,7 +205,7 @@
       "nome": "Frigideiras",
       "preco": 220,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_26.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -213,7 +213,7 @@
       "nome": "Forma para bolo redonda",
       "preco": 90,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_27.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -221,7 +221,7 @@
       "nome": "Forma de pizza",
       "preco": 80,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_28.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -229,7 +229,7 @@
       "nome": "Garrafa térmica",
       "preco": 120,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_29.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -237,7 +237,7 @@
       "nome": "Potes multiuso",
       "preco": 160,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_30.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -245,7 +245,7 @@
       "nome": "Funil",
       "preco": 25,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_31.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -253,7 +253,7 @@
       "nome": "Martelo de carne",
       "preco": 50,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_32.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -261,7 +261,7 @@
       "nome": "Ralador",
       "preco": 40,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_33.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -269,7 +269,7 @@
       "nome": "Pegador de macarrão",
       "preco": 40,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_34.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -277,7 +277,7 @@
       "nome": "Escumadeira",
       "preco": 35,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_35.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -285,7 +285,7 @@
       "nome": "Descascador de legumes",
       "preco": 35,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_36.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -293,7 +293,7 @@
       "nome": "Escorredor de louças",
       "preco": 180,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_37.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -301,7 +301,7 @@
       "nome": "Escorredor de macarrão",
       "preco": 70,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_38.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -309,7 +309,7 @@
       "nome": "Escorredor de arroz",
       "preco": 60,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_39.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -317,7 +317,7 @@
       "nome": "Centrífuga de salada",
       "preco": 120,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_40.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -325,7 +325,7 @@
       "nome": "Porta frios",
       "preco": 80,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_41.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -333,7 +333,7 @@
       "nome": "Balde de pipoca",
       "preco": 60,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_42.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -341,7 +341,7 @@
       "nome": "Peneira grande",
       "preco": 45,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_43.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -349,7 +349,7 @@
       "nome": "Rodinho de pia",
       "preco": 30,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_44.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -357,7 +357,7 @@
       "nome": "Pano de prato",
       "preco": 60,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_45.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -365,7 +365,7 @@
       "nome": "Tesoura de cozinha",
       "preco": 45,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_46.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -373,7 +373,7 @@
       "nome": "Lixeira",
       "preco": 160,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_47.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -381,7 +381,7 @@
       "nome": "Tapete",
       "preco": 220,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_48.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -389,7 +389,7 @@
       "nome": "Cortinas",
       "preco": 260,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_49.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -397,7 +397,7 @@
       "nome": "Manta para sofá",
       "preco": 140,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_50.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -405,7 +405,7 @@
       "nome": "Toalha de mesa",
       "preco": 100,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_51.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -413,7 +413,7 @@
       "nome": "Porta guardanapo",
       "preco": 80,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_52.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -421,7 +421,7 @@
       "nome": "Centro de mesa",
       "preco": 120,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_53.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -429,7 +429,7 @@
       "nome": "Fruteira",
       "preco": 100,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_54.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -437,7 +437,7 @@
       "nome": "Taça de vinho",
       "preco": 120,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_55.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -445,7 +445,7 @@
       "nome": "Travesseiros",
       "preco": 160,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_56.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -453,7 +453,7 @@
       "nome": "Cortinas extras",
       "preco": 220,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_57.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -461,7 +461,7 @@
       "nome": "Cabides",
       "preco": 60,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_58.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -469,7 +469,7 @@
       "nome": "Cesto de roupa suja",
       "preco": 140,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_59.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -477,7 +477,7 @@
       "nome": "Porta escova de dentes",
       "preco": 40,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_60.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -485,7 +485,7 @@
       "nome": "Saboneteira",
       "preco": 35,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_61.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -493,7 +493,7 @@
       "nome": "Porta papel higiênico",
       "preco": 60,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_62.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -501,7 +501,7 @@
       "nome": "Escova de privada",
       "preco": 35,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_63.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -509,7 +509,7 @@
       "nome": "Vassoura",
       "preco": 40,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_64.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -517,7 +517,7 @@
       "nome": "Rodo",
       "preco": 40,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_65.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -525,7 +525,7 @@
       "nome": "Espanador de pó",
       "preco": 40,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_66.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -533,7 +533,7 @@
       "nome": "Pá de lixo",
       "preco": 40,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_67.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -541,7 +541,7 @@
       "nome": "Flanelas e pano de chão",
       "preco": 80,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_68.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -549,7 +549,7 @@
       "nome": "Organizador de produtos de limpeza",
       "preco": 120,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_69.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -557,7 +557,7 @@
       "nome": "Mesa em L",
       "preco": 900,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_70.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     },
     {
@@ -565,7 +565,7 @@
       "nome": "Cadeira de escritório",
       "preco": 600,
       "grupo": "Vamos comprar",
-      "img": "./assets/img/gift_71.png",
+      "img": "./assets/img/gifts/default.png",
       "checkout_link": ""
     }
   ]

@@ -1,3 +1,3 @@
 window.APP_CONFIG={
-GIFTS_API:"https://script.google.com/macros/s/AKfycbyt5mh7BfdcBugnasxfF6TCfkClBUdfft0X0kNZdN6bX4YMsEXgnW-YAkbe10d4RY32Bw/exec"
+GIFTS_API:"https://script.google.com/macros/s/AKfycbwNvsLEBFFNQHEWjJWhNVAzLa7vZprl1PmbYbUPw_pQbYI8-DFNnB07gqzz7B9N-7aZ/exec?action=list"
 };

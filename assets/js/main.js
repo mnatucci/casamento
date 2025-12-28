@@ -171,7 +171,11 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 function initAnimations() {
-  $$('section').forEach(section => observer.observe(section));
+  if (window.innerWidth > 900) {
+    $$('section').forEach(section => observer.observe(section));
+  } else {
+    $$('section').forEach(section => section.classList.add('visible'));
+  }
 }
 
 // -------- BOOT --------

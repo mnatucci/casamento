@@ -53,8 +53,9 @@ h1, h2, h3 {
   justify-content: center;
   background: radial-gradient(circle at top left, #E4F0E8 0, transparent 50%),
               radial-gradient(circle at bottom right, #FDFDFB 0, transparent 50%);
-  padding: 80px 0;
+  padding: 60px 0;
   text-align: center;
+  overflow: hidden;
 }
 
 .hero-wrap {
@@ -151,15 +152,21 @@ h1, h2, h3 {
 
 /* SECTIONS */
 section {
-  padding: 100px 0;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
+  padding: 80px 0;
+  opacity: 1; /* Garantir visibilidade por padrão */
+  transform: none;
+  transition: opacity 0.8s ease-out;
 }
 
-section.visible {
-  opacity: 1;
-  transform: translateY(0);
+@media (min-width: 900px) {
+  section {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 section h2 {

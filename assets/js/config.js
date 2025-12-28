@@ -1,4 +1,4 @@
 window.APP_CONFIG = {
-  API_URL: "https://script.google.com/macros/s/AKfycby5pEc4wdRhKkToCnOeZtB0k8AnCQMkYFcBvCGcnz-IDg87HyvVwghb9z-6gyVaa1rd/exec",
+  API_URL: "https://script.google.com/macros/s/AKfycbw9H6BFZl79DFURIiy1j9_V5XOwMZCa4hZJ4ta-AJCJ7mIADD2KhAPBczFSc81YGTmW/exec",
   PIX_KEY: "ccoelhomuniz@gmail.com"
 };

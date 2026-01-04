@@ -67,7 +67,7 @@ function renderGifts(){
     const card = document.createElement('div');
     card.className = `gift card ${sold ? 'sold' : ''}`;
     
-    const imgPath = `./assets/img/gifts/${g.id}.png`;
+    const imgPath = g.img || './assets/img/gifts/default.png';
 const defaultImg = `./assets/img/gifts/default.png`;
 
     card.innerHTML = `

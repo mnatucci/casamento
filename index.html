@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Lucas & Carolina — 21/03/2025</title>
+  <meta name="description" content="Convite de casamento de Lucas & Carolina — 21 de março de 2025. Confirmação de presença (RSVP) + Lista de Presentes." />
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body>
+
+  <header class="hero">
+    <div class="container hero-wrap">
+      <span class="pill">💍 Convite de Casamento</span>
+      <h1 class="hero-names">Carolina & Lucas</h1>
+      <p class="subtitle">
+        Nossa história ganha um novo capítulo e ficaremos honrados em ter você ao nosso lado nesta celebração de amor.
+      </p>
+      <div class="date-pill">21 de Março de 2025 • 10h30</div>
+      <div class="cta">
+        <a class="btn primary" href="#rsvp">Confirmar Presença</a>
+        <a class="btn outline" href="#presentes">Lista de Presentes</a>
+      </div>
+      <div class="calendar">
+        <a id="add-ics" download="Lucas-e-Carolina.ics" href="#" style="font-size: 0.85rem; color: var(--text-muted); text-decoration: underline;">Adicionar ao Calendário</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <section id="historia">
+      <h2>Nossa História</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <img src="assets/img/nossa-historia.jpg" class="img-historia" alt="Foto do Casal">
+          <p>Entre girassóis, risos e planos, descobrimos um no outro o nosso lugar favorito. Cada capítulo nos trouxe até aqui — e queremos viver este próximo ao seu lado.</p>
+        </div>
+        <div class="card">
+          <h3>A Cerimônia</h3>
+          <div style="margin: 20px 0;">
+            <p><strong>📅 Data:</strong> 21/03/2025</p>
+            <p><strong>⏰ Horário:</strong> 10h30</p>
+            <p><strong>👗 Traje:</strong> Esporte Fino</p>
+          </div>
+          <p class="muted">
+            <strong>Local:</strong> Espaço Solene<br>
+            Av. Nova Cantareira, 3890 — Tucuruvi, São Paulo - SP.
+          </p>
+          <iframe 
+            src="https://www.google.com/maps?q=Av.%20Nova%20Cantareira%203890%20S%C3%A3o%20Paulo&output=embed"
+            width="100%" height="250" style="border:0; border-radius:15px; margin-top: 20px;"
+            loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="rsvp">
+      <h2>Confirmar Presença</h2>
+      <div class="grid grid-2">
+        <form id="rsvpForm" class="card">
+          <div class="form-group">
+            <label class="label" for="nome">Seu Nome</label>
+            <input class="input" id="nome" name="nome" required placeholder="Nome completo" />
+          </div>
+          <div class="grid grid-2">
+            <div class="form-group">
+              <label class="label" for="whatsapp">WhatsApp</label>
+              <input class="input" id="whatsapp" name="whatsapp" required placeholder="(11) 99999-9999" />
+            </div>
+            <div class="form-group">
+              <label class="label" for="email">E-mail</label>
+              <input class="input" id="email" name="email" type="email" required placeholder="seu@email.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="label" for="presenca">Você vai?</label>
+            <select class="select" id="presenca" name="presenca" required>
+              <option value="sim">Sim! Estarei lá</option>
+              <option value="nao">Infelizmente não poderei</option>
+              <option value="talvez">Talvez (avisarei em breve)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="label" for="mensagem">Mensagem (opcional)</label>
+            <textarea class="textarea" id="mensagem" name="mensagem" rows="3" placeholder="Deixe um recadinho carinhoso..."></textarea>
+          </div>
+          <button class="btn primary" type="submit" style="width: 100%;">Enviar Confirmação</button>
+        </form>
+
+        <div class="card" style="display: flex; flex-direction: column; justify-content: center; text-align: center;">
+          <h3 style="margin-bottom: 20px;">Você é parte desse dia 💛</h3>
+          <p style="margin-bottom: 30px;">Sua presença é o que torna esse dia completo. Cada detalhe foi pensado com muito carinho para celebrarmos juntos.</p>
+          <div class="pill" style="align-self: center;">
+            ✅ <span id="rsvpCount">0</span> presenças confirmadas
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="presentes">
+      <h2>Lista de Presentes</h2>
+      <p style="text-align: center; max-width: 700px; margin: 0 auto 40px; color: var(--text-muted);">
+        Sua presença é o nosso maior presente! Mas, se desejar nos presentear, preparamos uma lista com itens para o nosso novo lar.
+      </p>
+      <div id="giftList">
+        <!-- Carregado via JS -->
+      </div>
+    </section>
+
+    <section id="recados">
+      <h2>Mensagens</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Deixe um Recado</h3>
+          <div class="form-group">
+            <label class="label" for="msgNome">Seu Nome</label>
+            <input class="input" id="msgNome" required placeholder="Nome" />
+          </div>
+          <div class="form-group">
+            <label class="label" for="msgTexto">Mensagem</label>
+            <textarea class="textarea" id="msgTexto" rows="4" required placeholder="Escreva sua mensagem..."></textarea>
+          </div>
+          <button class="btn primary" type="button" onclick="enviarMsg()" style="width: 100%;">Enviar Mensagem</button>
+        </div>
+        <div class="card">
+          <h3>Recados do Coração</h3>
+          <div id="msgList" style="max-height: 400px; overflow-y: auto; padding-right: 10px;">
+            <!-- Carregado via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <h3>Lucas & Carolina</h3>
+      <p>21 de Março de 2025 • São Paulo, SP</p>
+      <p style="font-size: 0.8rem; opacity: 0.6;">Feito com amor para este dia especial.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/5511952969285" class="whatsapp-float" target="_blank" aria-label="Falar no WhatsApp">
+    <span style="font-size: 1.2rem; margin-right: 5px;">💬</span>
+  </a>
+
+  <!-- Gift Modal -->
+  <dialog id="giftModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="giftTitle">Presentear</h3>
+        <button class="close-modal" data-close>&times;</button>
+      </div>
+      <div id="giftBody">
+        <p style="margin-bottom: 20px; color: var(--text-muted);">Escolha a melhor forma de nos presentear:</p>
+        <div class="grid" style="gap: 15px;">
+          <button class="btn primary" id="payPix">Pagar via Pix</button>
+          <a id="mpCheckout" class="btn outline" target="_blank">Checkout PagBank</a>
+        </div>
+        
+        <div id="pixArea" style="display:none; margin-top: 30px; padding-top: 20px; border-top: 1px solid #EEE;">
+          <div class="form-group">
+            <label class="label">Chave Pix (E-mail)</label>
+            <input class="input" id="pixKey" readonly value="ccoelhomuniz@gmail.com" />
+          </div>
+          <div class="form-group">
+            <label class="label">Valor Sugerido (R$)</label>
+            <input class="input" id="pixValue" readonly />
+          </div>
+          <button class="btn primary" id="markPaid" style="width: 100%;">Já realizei o Pix</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast">✅ Ação concluída!</div>
+
+  <script src="./assets/js/config.js" defer></script>
+  <script src="./assets/js/main.js" defer></script>
+</body>
+</html>

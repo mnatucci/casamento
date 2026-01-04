@@ -238,24 +238,3 @@ dialog::backdrop { background: rgba(0,0,0,0.5); }
 .img-historia, .img-versiculo { width: 100%; border-radius: 15px; margin-bottom: 15px; }
 
 footer { padding: 40px 0; background: #F4F7F5; text-align: center; font-size: 0.9rem; }
-
-/* ===== IMAGEM DO PRESENTE (FIX MOBILE) ===== */
-
-.gift-image {
-  width: 100%;
-  height: 180px;
-  background-color: #f3f3f3;
-  border-radius: 12px;
-  overflow: hidden;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.gift-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* use cover se quiser preencher */
-  display: block;
-}

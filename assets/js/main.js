@@ -16,7 +16,8 @@ const currencyBRL = (v)=> new Intl.NumberFormat('pt-BR',{style:'currency',curren
 const STATE = {
   gifts: [],
   msgs: [],
-  rsvpCount: 0
+  rsvpCount: 0,
+  submittingRsvp: false // 🛡️ trava anti-duplicação
 };
 
 // -------- CALENDAR --------
@@ -36,19 +37,10 @@ const STATE = {
 async function loadGifts(){
   try {
     const res = await fetch(`${APP_CONFIG.API_URL}?action=list`);
-    if (!res.ok) throw new Error('API Error');
     const data = await res.json();
     STATE.gifts = Array.isArray(data) ? data : [];
     renderGifts();
-  } catch (err) {
-    console.error('API Load Error:', err);
-    try {
-      const localRes = await fetch('./data/gifts.json');
-      const localData = await localRes.json();
-      STATE.gifts = localData.gifts || [];
-      renderGifts();
-    } catch (e) {}
-  }
+  } catch (e) {}
 }
 
 function renderGifts(){
@@ -56,8 +48,8 @@ function renderGifts(){
   if(!wrap) return;
   wrap.innerHTML = '';
 
-  if (STATE.gifts.length === 0) {
-    wrap.innerHTML = '<p style="grid-column: 1/-1; text-align: center; opacity: 0.6;">Carregando presentes... 🌻</p>';
+  if (!STATE.gifts.length) {
+    wrap.innerHTML = '<p style="grid-column:1/-1;text-align:center;opacity:.6;">Carregando presentes... 🌻</p>';
     return;
   }
 
@@ -79,93 +71,61 @@ function renderGifts(){
       </button>
     `;
 
-    const img = card.querySelector('img');
-    img.onerror = () => img.src = defaultImg;
-
+    card.querySelector('img').onerror = e => e.target.src = defaultImg;
     wrap.appendChild(card);
   });
 }
-
-// -------- MODAL --------
-const giftModal = $('#giftModal'); 
-let currentGift = null;
-
-document.addEventListener('click', (e)=>{
-  const btn = e.target.closest('button[data-gift-id]');
-  if(btn){
-    const id = btn.getAttribute('data-gift-id');
-    currentGift = STATE.gifts.find(x => String(x.id) === String(id));
-    if(!currentGift) return;
-
-    $('#giftTitle').textContent = currentGift.nome;
-    $('#pixArea').style.display = 'none';
-    $('#pixValue').value = currentGift.preco;
-    $('#mpCheckout').href = currentGift.link || '#';
-    giftModal?.showModal();
-  }
-  if(e.target.matches('[data-close]')) giftModal?.close();
-});
-
-$('#payPix')?.addEventListener('click', () => {
-  $('#pixArea').style.display = 'block';
-});
-
-$('#markPaid')?.addEventListener('click', () => {
-  toast('Obrigado! Após o Pix, o item será atualizado em breve. 🌻');
-  giftModal?.close();
-});
 
 // -------- RSVP COUNT --------
 async function loadRsvpCount(){
   try {
     const res = await fetch(`${APP_CONFIG.API_URL}?action=presencas`);
     const data = await res.json();
+    STATE.rsvpCount = Array.isArray(data)
+      ? data.filter(p => p.resposta?.toLowerCase() === 'sim').length
+      : data.count || data || 0;
+    $('#rsvpCount').textContent = STATE.rsvpCount;
+  } catch(e){}
+}
 
-    if (typeof data === 'object' && data.count !== undefined) {
-      STATE.rsvpCount = data.count;
-    } else if (Array.isArray(data)) {
-      STATE.rsvpCount = data.filter(p => p.resposta?.toLowerCase() === 'sim').length;
-    } else if (typeof data === 'number') {
-      STATE.rsvpCount = data;
+// -------- RSVP FORM (FINAL) --------
+const rsvpForm = document.getElementById('rsvpForm');
+if (rsvpForm) {
+  rsvpForm.removeAttribute('onsubmit'); // 🧹 remove HTML antigo
+
+  rsvpForm.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (STATE.submittingRsvp) return;
+    STATE.submittingRsvp = true;
+
+    const fd = new FormData(rsvpForm);
+    const params = new URLSearchParams({
+      action: 'presenca',
+      nome: fd.get('nome'),
+      whatsapp: fd.get('whatsapp'),
+      email: fd.get('email'),
+      resposta: fd.get('presenca'),
+      mensagem: fd.get('mensagem') || ''
+    });
+
+    fetch(`${APP_CONFIG.API_URL}?${params.toString()}`, { mode:'no-cors' });
+
+    toast('Presença confirmada com sucesso! 💛');
+    rsvpForm.reset();
+
+    if(fd.get('presenca') === 'sim'){
+      STATE.rsvpCount++;
+      $('#rsvpCount').textContent = STATE.rsvpCount;
     }
 
-    updateRsvpDisplay();
-  } catch (err) {
-    console.error('Erro ao carregar presenças:', err);
-  }
-}
-
-function updateRsvpDisplay(){
-  const countEl = $('#rsvpCount');
-  if(countEl) countEl.textContent = STATE.rsvpCount;
-}
-
-// -------- RSVP FORM (CORRIGIDO) --------
-$('#rsvpForm')?.addEventListener('submit', (e)=>{
-  e.preventDefault();
-  const formData = new FormData(e.currentTarget);
-
-  const params = new URLSearchParams({
-    action: 'presenca',
-    nome: formData.get('nome'),
-    whatsapp: formData.get('whatsapp'),
-    email: formData.get('email'),
-    resposta: formData.get('presenca'),
-    mensagem: formData.get('mensagem') || ''
+    setTimeout(()=>{
+      loadRsvpCount();
+      STATE.submittingRsvp = false;
+    }, 2000);
   });
-
-  fetch(`${APP_CONFIG.API_URL}?${params.toString()}`, { mode: 'no-cors' });
-
-  toast('Presença confirmada com sucesso! 💛');
-  e.currentTarget.reset();
-
-  if(formData.get('presenca') === 'sim'){
-    STATE.rsvpCount++;
-    updateRsvpDisplay();
-  }
-
-  setTimeout(loadRsvpCount, 2000);
-});
+}
 
 // -------- MESSAGES --------
 async function loadMessages(){
@@ -174,48 +134,34 @@ async function loadMessages(){
     const data = await res.json();
     STATE.msgs = Array.isArray(data) ? data : (data.mensagens || []);
     renderMessages();
-  } catch (err) {
-    console.error('Erro ao carregar mensagens:', err);
-  }
+  } catch(e){}
 }
 
 function renderMessages(){
   const wrap = $('#msgList');
   if(!wrap) return;
-
-  if(STATE.msgs.length === 0){
+  if(!STATE.msgs.length){
     wrap.innerHTML = '<p style="text-align:center;opacity:.6;">Seja o primeiro a deixar um recado! 💛</p>';
     return;
   }
-
   wrap.innerHTML = '';
-  [...STATE.msgs].reverse().forEach(msg => {
-    const el = document.createElement('div');
-    el.className = 'message-item';
-    el.innerHTML = `<strong>${escapeHtml(msg.nome||'')}</strong><div>${escapeHtml(msg.mensagem||'')}</div>`;
-    wrap.appendChild(el);
+  [...STATE.msgs].reverse().forEach(m=>{
+    const d=document.createElement('div');
+    d.className='message-item';
+    d.innerHTML=`<strong>${escapeHtml(m.nome||'')}</strong><div>${escapeHtml(m.mensagem||'')}</div>`;
+    wrap.appendChild(d);
   });
 }
 
-function escapeHtml(text){
-  const d = document.createElement('div');
-  d.textContent = text;
+function escapeHtml(t){
+  const d=document.createElement('div');
+  d.textContent=t;
   return d.innerHTML;
 }
 
 // -------- BOOT --------
-async function boot(){
-  document.querySelectorAll('section').forEach(s => {
-    s.style.opacity = '1';
-    s.style.transform = 'none';
-    s.style.display = 'block';
-  });
-
-  await Promise.all([
-    loadGifts(),
-    loadRsvpCount(),
-    loadMessages()
-  ]);
-}
-
-document.addEventListener('DOMContentLoaded', boot);
+document.addEventListener('DOMContentLoaded', ()=>{
+  loadGifts();
+  loadRsvpCount();
+  loadMessages();
+});

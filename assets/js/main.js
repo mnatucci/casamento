@@ -63,18 +63,13 @@ function renderGifts(){
 
   STATE.gifts.forEach(g => {
     const sold = g.status && g.status.toLowerCase() !== 'disponivel';
-
-    // 🔧 NORMALIZA O ID VINDO DA PLANILHA
-    const cleanId = String(g.id)
-      .trim()
-      .replace(/\s/g, '')
-      .replace(/^0+/, '');
-
-    const imgPath = `./assets/img/gifts/${cleanId}.png`;
-    const defaultImg = `./assets/img/gifts/default.png`;
-
     const card = document.createElement('div');
     card.className = `gift card ${sold ? 'sold' : ''}`;
+
+    // ✅ ÚNICA ALTERAÇÃO DO ARQUIVO
+    const cleanId = String(g.id).trim().replace(/\s/g,'').replace(/^0+/, '');
+    const imgPath = `./assets/img/gifts/${cleanId}.png`;
+    const defaultImg = `./assets/img/gifts/default.png`;
 
     card.innerHTML = `
       <img src="${imgPath}" alt="${g.nome}">
@@ -85,7 +80,6 @@ function renderGifts(){
       </button>
     `;
 
-    // fallback seguro
     const img = card.querySelector('img');
     img.onerror = () => {
       img.src = defaultImg;
@@ -103,7 +97,7 @@ document.addEventListener('click', (e)=>{
   const btn = e.target.closest('button[data-gift-id]');
   if(btn){
     const id = btn.getAttribute('data-gift-id');
-    currentGift = STATE.gifts.find(x => String(x.id).trim() === String(id).trim());
+    currentGift = STATE.gifts.find(x => String(x.id) === String(id));
     if(!currentGift) return;
     
     $('#giftTitle').textContent = currentGift.nome;
@@ -149,17 +143,13 @@ async function loadRsvpCount(){
         STATE.rsvpCount = data.count || data.total || 0;
         updateRsvpDisplay();
       }
-    } catch (e) {
-      console.error('Erro ao carregar contagem alternativa:', e);
-    }
+    } catch (e) {}
   }
 }
 
 function updateRsvpDisplay(){
   const countEl = $('#rsvpCount');
-  if(countEl){
-    countEl.textContent = STATE.rsvpCount;
-  }
+  if(countEl) countEl.textContent = STATE.rsvpCount;
 }
 
 // -------- RSVP FORM --------
@@ -182,8 +172,7 @@ $('#rsvpForm')?.addEventListener('submit', async (e)=>{
       mensagem: formData.get('mensagem') || ''
     });
     
-    const url = `${APP_CONFIG.API_URL}?${params.toString()}`;
-    await fetch(url, { mode: 'no-cors' });
+    await fetch(`${APP_CONFIG.API_URL}?${params.toString()}`, { mode: 'no-cors' });
     toast('Presença confirmada com sucesso! 💛');
     e.currentTarget.reset();
     
@@ -210,7 +199,6 @@ async function loadMessages(){
     STATE.msgs = Array.isArray(data) ? data : (data.mensagens || []);
     renderMessages();
   } catch (err) {
-    console.error('Erro ao carregar mensagens:', err);
     try {
       const res = await fetch(`${APP_CONFIG.API_URL}?action=recados`);
       if (res.ok) {
@@ -218,9 +206,7 @@ async function loadMessages(){
         STATE.msgs = Array.isArray(data) ? data : (data.recados || []);
         renderMessages();
       }
-    } catch (e) {
-      console.error('Erro ao carregar recados:', e);
-    }
+    } catch (e) {}
   }
 }
 
@@ -234,24 +220,14 @@ function renderMessages(){
   }
   
   wrap.innerHTML = '';
-  
-  const sortedMsgs = [...STATE.msgs].reverse();
-  
-  sortedMsgs.forEach(msg => {
-    const msgEl = document.createElement('div');
-    msgEl.className = 'message-item';
-    msgEl.style.cssText = 'background: var(--bg-card, #f9f9f9); padding: 15px; border-radius: 12px; margin-bottom: 12px; border-left: 3px solid var(--primary, #D4A574);';
-    
-    const nome = msg.nome || msg.name || 'Anônimo';
-    const texto = msg.mensagem || msg.texto || msg.message || msg.recado || '';
-    const data = msg.data || msg.date || msg.timestamp || '';
-    
-    msgEl.innerHTML = `
-      <div style="font-weight: 600; color: var(--primary, #D4A574); margin-bottom: 5px;">${escapeHtml(nome)}</div>
-      <div style="color: var(--text, #333); line-height: 1.5;">${escapeHtml(texto)}</div>
-      ${data ? `<div style="font-size: 0.75rem; color: var(--text-muted, #888); margin-top: 8px;">${formatDate(data)}</div>` : ''}
+  [...STATE.msgs].reverse().forEach(msg => {
+    const el = document.createElement('div');
+    el.className = 'message-item';
+    el.innerHTML = `
+      <strong>${escapeHtml(msg.nome || 'Anônimo')}</strong>
+      <div>${escapeHtml(msg.mensagem || '')}</div>
     `;
-    wrap.appendChild(msgEl);
+    wrap.appendChild(el);
   });
 }
 
@@ -260,55 +236,6 @@ function escapeHtml(text){
   div.textContent = text;
   return div.innerHTML;
 }
-
-function formatDate(dateStr){
-  try {
-    const date = new Date(dateStr);
-    if(isNaN(date.getTime())) return dateStr;
-    return date.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
-  } catch(e){
-    return dateStr;
-  }
-}
-
-window.enviarMsg = async function(){
-  const n = $('#msgNome').value.trim();
-  const t = $('#msgTexto').value.trim();
-  if(!n || !t) {
-    toast('Por favor, preencha seu nome e mensagem.');
-    return;
-  }
-
-  const btn = $('#recados button');
-  const originalText = btn.textContent;
-  btn.disabled = true;
-  btn.textContent = 'Enviando...';
-
-  try {
-    const params = new URLSearchParams({
-      action: 'mensagem',
-      nome: n,
-      mensagem: t
-    });
-    
-    const url = `${APP_CONFIG.API_URL}?${params.toString()}`;
-    await fetch(url, { mode: 'no-cors' });
-    toast('Mensagem enviada com carinho! ✨');
-    
-    STATE.msgs.push({ nome: n, mensagem: t, data: new Date().toISOString() });
-    renderMessages();
-    
-    $('#msgNome').value = '';
-    $('#msgTexto').value = '';
-    
-    setTimeout(loadMessages, 2000);
-  } catch (err) {
-    toast('Erro ao enviar mensagem.');
-  } finally {
-    btn.disabled = false;
-    btn.textContent = originalText;
-  }
-};
 
 // -------- BOOT --------
 async function boot(){

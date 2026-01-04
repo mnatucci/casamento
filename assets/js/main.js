@@ -71,7 +71,9 @@ function renderGifts(){
 const defaultImg = `./assets/img/gifts/default.png`;
 
     card.innerHTML = `
-      <img src="${imgPath}" alt="${g.nome}" onerror="this.src='${defaultImg}'">
+      <div class="gift-image">
+  <img src="${imgPath}" alt="${g.nome}" onerror="this.src='${defaultImg}'">
+</div>
       <div class="title">${g.nome}</div>
       <div class="price">${currencyBRL(g.preco)}</div>
       <button class="btn ${sold ? 'outline' : 'primary'}" ${sold ? 'disabled' : ''} data-gift-id="${g.id}">

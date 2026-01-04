@@ -85,7 +85,7 @@ function renderGifts(){
       </button>
     `;
 
-    // fallback para imagem padrão
+    // fallback seguro
     const img = card.querySelector('img');
     img.onerror = () => {
       img.src = defaultImg;
@@ -125,11 +125,190 @@ $('#markPaid')?.addEventListener('click', () => {
 });
 
 // -------- RSVP COUNT --------
-async function loadRsvpCount(){ /* ⬅️ SEU CÓDIGO ORIGINAL, SEM ALTERAÇÃO */ }
+async function loadRsvpCount(){
+  try {
+    const res = await fetch(`${APP_CONFIG.API_URL}?action=presencas`);
+    if (!res.ok) throw new Error('API Error');
+    const data = await res.json();
+    
+    if (typeof data === 'object' && data.count !== undefined) {
+      STATE.rsvpCount = data.count;
+    } else if (Array.isArray(data)) {
+      STATE.rsvpCount = data.filter(p => p.resposta && p.resposta.toLowerCase() === 'sim').length;
+    } else if (typeof data === 'number') {
+      STATE.rsvpCount = data;
+    }
+    
+    updateRsvpDisplay();
+  } catch (err) {
+    console.error('Erro ao carregar presenças:', err);
+    try {
+      const res = await fetch(`${APP_CONFIG.API_URL}?action=contarPresencas`);
+      if (res.ok) {
+        const data = await res.json();
+        STATE.rsvpCount = data.count || data.total || 0;
+        updateRsvpDisplay();
+      }
+    } catch (e) {
+      console.error('Erro ao carregar contagem alternativa:', e);
+    }
+  }
+}
+
+function updateRsvpDisplay(){
+  const countEl = $('#rsvpCount');
+  if(countEl){
+    countEl.textContent = STATE.rsvpCount;
+  }
+}
+
 // -------- RSVP FORM --------
-/* SEU CÓDIGO ORIGINAL */
+$('#rsvpForm')?.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const formData = new FormData(e.currentTarget);
+  const btn = e.currentTarget.querySelector('button');
+  const originalText = btn.textContent;
+  
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  try {
+    const params = new URLSearchParams({
+      action: 'presenca',
+      nome: formData.get('nome'),
+      whatsapp: formData.get('whatsapp'),
+      email: formData.get('email'),
+      resposta: formData.get('presenca'),
+      mensagem: formData.get('mensagem') || ''
+    });
+    
+    const url = `${APP_CONFIG.API_URL}?${params.toString()}`;
+    await fetch(url, { mode: 'no-cors' });
+    toast('Presença confirmada com sucesso! 💛');
+    e.currentTarget.reset();
+    
+    if(formData.get('presenca') === 'sim'){
+      STATE.rsvpCount++;
+      updateRsvpDisplay();
+    }
+    
+    setTimeout(loadRsvpCount, 2000);
+  } catch (err) {
+    toast('Erro ao enviar. Tente novamente. 💛');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = originalText;
+  }
+});
+
 // -------- MESSAGES --------
-/* SEU CÓDIGO ORIGINAL */
+async function loadMessages(){
+  try {
+    const res = await fetch(`${APP_CONFIG.API_URL}?action=mensagens`);
+    if (!res.ok) throw new Error('API Error');
+    const data = await res.json();
+    STATE.msgs = Array.isArray(data) ? data : (data.mensagens || []);
+    renderMessages();
+  } catch (err) {
+    console.error('Erro ao carregar mensagens:', err);
+    try {
+      const res = await fetch(`${APP_CONFIG.API_URL}?action=recados`);
+      if (res.ok) {
+        const data = await res.json();
+        STATE.msgs = Array.isArray(data) ? data : (data.recados || []);
+        renderMessages();
+      }
+    } catch (e) {
+      console.error('Erro ao carregar recados:', e);
+    }
+  }
+}
+
+function renderMessages(){
+  const wrap = $('#msgList');
+  if(!wrap) return;
+  
+  if(STATE.msgs.length === 0){
+    wrap.innerHTML = '<p style="text-align: center; opacity: 0.6; padding: 20px;">Seja o primeiro a deixar um recado! 💛</p>';
+    return;
+  }
+  
+  wrap.innerHTML = '';
+  
+  const sortedMsgs = [...STATE.msgs].reverse();
+  
+  sortedMsgs.forEach(msg => {
+    const msgEl = document.createElement('div');
+    msgEl.className = 'message-item';
+    msgEl.style.cssText = 'background: var(--bg-card, #f9f9f9); padding: 15px; border-radius: 12px; margin-bottom: 12px; border-left: 3px solid var(--primary, #D4A574);';
+    
+    const nome = msg.nome || msg.name || 'Anônimo';
+    const texto = msg.mensagem || msg.texto || msg.message || msg.recado || '';
+    const data = msg.data || msg.date || msg.timestamp || '';
+    
+    msgEl.innerHTML = `
+      <div style="font-weight: 600; color: var(--primary, #D4A574); margin-bottom: 5px;">${escapeHtml(nome)}</div>
+      <div style="color: var(--text, #333); line-height: 1.5;">${escapeHtml(texto)}</div>
+      ${data ? `<div style="font-size: 0.75rem; color: var(--text-muted, #888); margin-top: 8px;">${formatDate(data)}</div>` : ''}
+    `;
+    wrap.appendChild(msgEl);
+  });
+}
+
+function escapeHtml(text){
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+function formatDate(dateStr){
+  try {
+    const date = new Date(dateStr);
+    if(isNaN(date.getTime())) return dateStr;
+    return date.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+  } catch(e){
+    return dateStr;
+  }
+}
+
+window.enviarMsg = async function(){
+  const n = $('#msgNome').value.trim();
+  const t = $('#msgTexto').value.trim();
+  if(!n || !t) {
+    toast('Por favor, preencha seu nome e mensagem.');
+    return;
+  }
+
+  const btn = $('#recados button');
+  const originalText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  try {
+    const params = new URLSearchParams({
+      action: 'mensagem',
+      nome: n,
+      mensagem: t
+    });
+    
+    const url = `${APP_CONFIG.API_URL}?${params.toString()}`;
+    await fetch(url, { mode: 'no-cors' });
+    toast('Mensagem enviada com carinho! ✨');
+    
+    STATE.msgs.push({ nome: n, mensagem: t, data: new Date().toISOString() });
+    renderMessages();
+    
+    $('#msgNome').value = '';
+    $('#msgTexto').value = '';
+    
+    setTimeout(loadMessages, 2000);
+  } catch (err) {
+    toast('Erro ao enviar mensagem.');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = originalText;
+  }
+};
 
 // -------- BOOT --------
 async function boot(){

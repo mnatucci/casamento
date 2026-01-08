@@ -236,30 +236,50 @@ function escapeHtml(t){
 }
 
 window.enviarMsg = async () => {
-  const nome = $('#msgNome').value.trim();
-  const texto = $('#msgTexto').value.trim();
+  const n = $('#msgNome').value.trim();
+  const t = $('#msgTexto').value.trim();
 
-  if (!nome || !texto) {
+  if (!n || !t) {
     toast('Por favor, preencha seu nome e a mensagem. ✍️');
     return;
   }
 
+  const btn = $('#recados button');
+  const originalText = btn ? btn.textContent : 'Enviar Mensagem';
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+  }
+
   const params = new URLSearchParams({
     action: 'mensagem',
-    nome: nome,
-    mensagem: texto
+    nome: n,
+    mensagem: t
   });
 
   try {
-    fetch(`${APP_CONFIG.API_URL}?${params.toString()}`, { mode: 'no-cors' });
+    const url = `${APP_CONFIG.API_URL}?${params.toString()}`;
+    await fetch(url, { mode: 'no-cors' });
+    
     toast('Mensagem enviada com carinho! 💛');
+    
+    // Limpa os campos
     $('#msgNome').value = '';
     $('#msgTexto').value = '';
-    STATE.msgs.push({ nome, mensagem: texto });
+    
+    // Adiciona localmente para feedback imediato
+    STATE.msgs.push({ nome: n, mensagem: t });
     renderMessages();
+    
+    // Recarrega da API após um tempo
     setTimeout(loadMessages, 2000);
   } catch (e) {
-    toast('Erro ao enviar mensagem.');
+    toast('Erro ao enviar mensagem. Tente novamente.');
+  } finally {
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = originalText;
+    }
   }
 };
 
